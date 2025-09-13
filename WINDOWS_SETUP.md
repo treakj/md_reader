@@ -23,9 +23,12 @@ Este guia explica **passo a passo** como definir o MD Reader como programa padr�
 
 ### Passo 3: Selecionar o MD Reader
 1. Navegue até a pasta onde você instalou o MD Reader
-2. **IMPORTANTE**: Selecione o arquivo **`leitor_md.pyw`** (não o `.py`)
-3. **Marque a caixa** "Sempre usar este aplicativo para abrir arquivos .md"
-4. Clique em **"OK"**
+2. **RECOMENDADO**: Selecione o arquivo **`md_reader.bat`** ⭐
+3. **Alternativa**: Se não funcionar, tente `leitor_md.pyw`
+4. **Marque a caixa** "Sempre usar este aplicativo para abrir arquivos .md"
+5. Clique em **"OK"**
+
+> 💡 **Por quê .bat?** Arquivos `.bat` são mais confiáveis como programa padrão no Windows
 
    ![image](https://user-images.githubusercontent.com/placeholder/select-app.png)
 

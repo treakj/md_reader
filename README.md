@@ -68,14 +68,16 @@ python leitor_md.pyw
 
 Para definir o Leitor MD como programa padrão para arquivos `.md`:
 
-### Método 1: Via Windows Explorer
+### Método 1: Via Windows Explorer (Recomendado)
 
 1. Clique com o botão direito em qualquer arquivo `.md`
 2. Selecione **"Abrir com"** → **"Escolher outro aplicativo"**
 3. Clique em **"Mais aplicativos"** → **"Procurar outro aplicativo neste PC"**
-4. Navegue até a pasta do projeto e selecione `leitor_md.pyw`
+4. Navegue até a pasta do projeto e selecione **`md_reader.bat`** ⭐
 5. Marque **"Sempre usar este aplicativo para abrir arquivos .md"**
 6. Clique em **"OK"**
+
+> 💡 **Por que `.bat` é melhor**: Arquivos `.bat` são mais confiáveis como programa padrão no Windows que arquivos `.pyw`
 
 ### Método 2: Via Configurações do Windows
 
@@ -115,6 +117,7 @@ Windows Registry Editor Version 5.00
 
 ### Linha de comando
 
+**Usando Python diretamente:**
 ```bash
 # Abrir um arquivo específico
 python leitor_md.pyw caminho/para/arquivo.md
@@ -122,6 +125,17 @@ python leitor_md.pyw caminho/para/arquivo.md
 # Abrir o programa sem arquivo
 python leitor_md.pyw
 ```
+
+**Usando o arquivo batch (Windows):**
+```bash
+# Abrir um arquivo específico
+md_reader.bat caminho/para/arquivo.md
+
+# Abrir o programa sem arquivo
+md_reader.bat
+```
+
+> 💡 **Dica**: O arquivo `md_reader.bat` é mais confiável para definir como programa padrão no Windows
 
 ## 📋 Formatos suportados
 
