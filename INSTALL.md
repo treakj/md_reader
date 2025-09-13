@@ -10,8 +10,11 @@ cd md_reader
 # Instalar dependências
 pip install -r requirements.txt
 
-# Testar aplicação
+# Testar aplicação (interface sem console)
 python leitor_md.pyw
+
+# OU para debug (com console visível)
+python markdown_reader.py
 ```
 
 ## ⚡ Instalação Manual

@@ -93,7 +93,7 @@ Windows Registry Editor Version 5.00
 
 ---
 
-## 📋 Verificação e Teste
+## 📝 Verificação e Teste
 
 ### Como saber se funcionou:
 
@@ -104,9 +104,25 @@ Windows Registry Editor Version 5.00
 ### Se não funcionou:
 
 1. ✅ **Verifique o caminho**: Certifique-se que `leitor_md.pyw` está no local correto
-2. ✅ **Teste o programa**: Execute `python leitor_md.pyw` manualmente
+2. ✅ **Teste o programa**: Execute `python leitor_md.pyw` manualmente (não apenas `leitor_md.pyw`)
 3. ✅ **Dependências**: Verifique se `pip install -r requirements.txt` foi executado
 4. ✅ **Permissions**: Tente executar como administrador
+
+### ⚠️ **IMPORTANTE - Sobre arquivos .pyw**:
+
+O arquivo `.pyw` **NÃO PODE** ser executado diretamente no terminal:
+
+```bash
+# ❌ ERRADO - Não funciona
+leitor_md.pyw
+./leitor_md.pyw
+
+# ✅ CORRETO - Use python antes
+python leitor_md.pyw
+python leitor_md.pyw arquivo.md
+```
+
+**Por quê?** Arquivos `.pyw` são "Python Windowed" e precisam do interpretador Python para executar. Eles são diferentes de executáveis `.exe`.
 
 ---
 

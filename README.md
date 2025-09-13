@@ -42,15 +42,27 @@ pip install -r requirements.txt
 
 ### 3. Executar o programa
 
+**Para desenvolvimento/debug (com console):**
 ```bash
 python markdown_reader.py
 ```
 
-Ou use o launcher:
-
+**Para uso normal (sem console):**
 ```bash
 python leitor_md.pyw
 ```
+
+> ⚠️ **Importante**: O arquivo `.pyw` não pode ser executado diretamente no terminal (ex: `leitor_md.pyw`). Você deve usar `python leitor_md.pyw` ou clicar duas vezes no arquivo.
+
+### 🤔 Diferença entre `.py` e `.pyw`:
+
+| Extensão | Uso | Console | Melhor para |
+|----------|-----|---------|-------------|
+| `.py` | `python markdown_reader.py` | ✅ Visível | Debug, desenvolvimento |
+| `.pyw` | `python leitor_md.pyw` | ❌ Oculto | Usuário final, programa padrão |
+
+- **`.py`**: Mostra janela do console = melhor para debug
+- **`.pyw`**: Sem console = interface mais limpa para usuários
 
 ## 🔧 Configurar como Programa Padrão (Windows)
 
