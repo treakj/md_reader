@@ -32,6 +32,14 @@ if not WEASYPRINT_AVAILABLE:
         REPORTLAB_AVAILABLE = False
 import tempfile
 from pathlib import Path
+from typing import Optional, Tuple
+
+# Optional encoding detection
+try:
+    import chardet  # type: ignore
+    CHARDET_AVAILABLE = True
+except Exception:
+    CHARDET_AVAILABLE = False
 
 try:
     from tkinterweb import HtmlFrame
@@ -49,6 +57,7 @@ class MarkdownReader:
         
         # Current file path
         self.current_file = None
+        self.current_file_encoding: Optional[str] = None
         
         # Create GUI
         self.create_menu()
@@ -155,10 +164,10 @@ class MarkdownReader:
         
         if filepath:
             try:
-                with open(filepath, 'r', encoding='utf-8') as file:
-                    content = file.read()
+                content, used_encoding = self._read_text_file_with_fallbacks(filepath)
                 
                 self.current_file = filepath
+                self.current_file_encoding = used_encoding
                 self.display_markdown(content)
                 self.update_title(filepath)
                 
@@ -308,8 +317,7 @@ class MarkdownReader:
         if filepath:
             try:
                 # Read markdown content
-                with open(self.current_file, 'r', encoding='utf-8') as file:
-                    markdown_content = file.read()
+                markdown_content, _ = self._read_text_file_with_fallbacks(self.current_file)
                 
                 if WEASYPRINT_AVAILABLE:
                     # Use WeasyPrint if available
@@ -328,6 +336,53 @@ class MarkdownReader:
                 
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao exportar PDF:\n{str(e)}")
+
+    def _read_text_file_with_fallbacks(self, filepath: str) -> Tuple[str, str]:
+        """Read text file trying multiple encodings.
+
+        Order tried:
+        - utf-8
+        - utf-8-sig
+        - cp1252
+        - latin-1
+        - chardet-detected (if available)
+        - utf-8 with replacement (never fails)
+
+        Returns a tuple (content, used_encoding).
+        """
+        preferred_encodings = [
+            "utf-8",
+            "utf-8-sig",
+            "cp1252",
+            "latin-1",
+        ]
+
+        for enc in preferred_encodings:
+            try:
+                with open(filepath, "r", encoding=enc) as file_obj:
+                    return file_obj.read(), enc
+            except UnicodeDecodeError:
+                continue
+
+        # Try chardet detection as a best-effort
+        if CHARDET_AVAILABLE:
+            try:
+                with open(filepath, "rb") as raw_file:
+                    raw_bytes = raw_file.read()
+                detection = chardet.detect(raw_bytes)
+                detected_encoding = detection.get("encoding")
+                if detected_encoding:
+                    try:
+                        text = raw_bytes.decode(detected_encoding)
+                        return text, detected_encoding
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+
+        # Final fallback: decode with utf-8 replacing invalid bytes
+        with open(filepath, "r", encoding="utf-8", errors="replace") as file_obj:
+            return file_obj.read(), "utf-8-replace"
     
     def export_pdf_reportlab(self, markdown_content, filepath):
         """Export PDF using ReportLab (simpler but less formatting)"""
