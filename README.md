@@ -21,6 +21,19 @@
 
 ## ✨ Funcionalidades
 
+### 🔥 Novidades na Versão 2.0
+
+- 🌙 **Modo Escuro**: Interface noturna confortável para os olhos
+- 🔍 **Busca Avançada**: Encontre texto rapidamente com navegação entre resultados
+- 🔎 **Controles de Zoom**: Aumente ou diminua o tamanho do texto (50% - 300%)
+- 📚 **Arquivos Recentes**: Acesso rápido aos últimos documentos abertos
+- 🎨 **Interface Aprimorada**: Design moderno com melhor usabilidade
+- 📝 **Validação de Arquivos**: Verificação robusta de arquivos antes da abertura
+- 📊 **Logging**: Sistema de log para diagnóstico de problemas
+- 💾 **Configurações Persistentes**: Suas preferências são salvas automaticamente
+
+### Funcionalidades Principais
+
 - 📖 **Visualização de Markdown**: Renderização elegante de arquivos `.md` com syntax highlighting
 - 📄 **Exportação PDF**: Converta seus documentos Markdown para PDF com formatação preservada
 - 🎨 **Interface amigável**: Interface gráfica limpa e intuitiva
@@ -111,9 +124,24 @@ Windows Registry Editor Version 5.00
 
 ### Interface Gráfica
 
-1. **Abrir arquivo**: Use `Ctrl+O` ou clique em "Abrir Arquivo"
-2. **Exportar PDF**: Use `Ctrl+E` ou clique em "Exportar PDF"
-3. **Sair**: Use `Ctrl+Q` ou feche a janela
+#### 📁 Arquivo
+- **Abrir arquivo**: `Ctrl+O` ou clique em "Abrir Arquivo"
+- **Arquivos Recentes**: Acesso rápido aos últimos 20 documentos
+- **Exportar PDF**: `Ctrl+E` ou clique em "Exportar PDF"
+- **Sair**: `Ctrl+Q` ou feche a janela
+
+#### 🔍 Visualizar
+- **Buscar**: `Ctrl+F` - Busca de texto com navegação entre resultados
+- **Modo Escuro**: Alternar entre tema claro e escuro
+- **Zoom In**: `Ctrl++` - Aumentar tamanho do texto
+- **Zoom Out**: `Ctrl+-` - Diminuir tamanho do texto
+- **Zoom Normal**: `Ctrl+0` - Restaurar tamanho original
+
+#### 🎛️ Barra de Ferramentas
+- Botões rápidos para abrir arquivo e exportar PDF
+- Controles de zoom com visualização da porcentagem
+- Toggle de modo escuro
+- Botão de busca rápida
 
 ### Linha de comando
 
@@ -162,10 +190,57 @@ O Leitor MD suporta:
 
 ## 📦 Dependências
 
+### Bibliotecas Principais
 - `markdown==3.5.1` - Processamento de Markdown
-- `weasyprint==60.2` - Geração de PDF
+- `weasyprint==59.0` - Geração de PDF de alta qualidade
+- `reportlab==4.0.7` - Fallback para geração de PDF
 - `pygments==2.17.2` - Syntax highlighting
 - `tkinterweb==3.24.7` - Widget HTML para Tkinter
+
+### Bibliotecas Padrão do Python
+- `tkinter` - Interface gráfica (já inclusa no Python)
+- `json` - Configurações e arquivos recentes
+- `logging` - Sistema de logs
+- `pathlib` - Manipulação de caminhos de arquivos
+- `html.parser` - Parser HTML para PDF export
+- `tempfile` - Arquivos temporários
+
+### Sistema de Fallback
+O aplicativo possui um sistema robusto de fallback:
+- **PDF Export**: WeasyPrint → ReportLab → HTML (fallback)
+- **HTML Rendering**: tkinterweb → Text widget (fallback)
+- **File Validation**: Verificação completa antes da abertura
+
+## 🧪 Testes
+
+Execute a suíte de testes para verificar a funcionalidade:
+
+```bash
+python test_markdown_reader.py
+```
+
+Os testes cobrem:
+- Validação de arquivos
+- Carregamento de configurações
+- Parsing de Markdown
+- Extensões suportadas
+
+## 🚀 Atualizações Recentes (v2.0.1)
+
+### ✅ Bugs Corrigidos
+
+- **🐛 Erro "margin not defined"**: Corrigido problema de f-string escaping em CSS que impedia abertura de arquivos
+- **🌙 Modo Escuro**: Agora funciona corretamente, aplicando tema tanto na interface quanto no conteúdo do documento
+- **🔍 Zoom**: Controles de zoom agora escalam o texto do documento corretamente (50% - 300%)
+- **⚙️ Configuração HTML**: Removido erro de configuração inválida do HtmlFrame
+
+### 📈 Melhorias
+
+- **CSS Dinâmico**: Cores e tamanhos de fonte se ajustam automaticamente ao modo e zoom
+- **Melhor Contraste**: Modo escuro com melhor legibilidade
+- **Logs Aprimorados**: Mensagens de erro mais claras para diagnóstico
+
+**Status**: ✅ **Todas as funcionalidades principais funcionando perfeitamente!**
 
 ## 🐛 Solução de problemas
 
@@ -189,6 +264,18 @@ No Windows, pode ser necessário instalar dependências adicionais:
 ### Interface não carrega HTML
 
 Se a biblioteca `tkinterweb` não estiver disponível, o programa usará um widget de texto simples como fallback.
+
+### Logs de Erro
+
+O aplicativo gera logs em `md_reader.log` para diagnóstico de problemas.
+
+### Configurações
+
+As configurações são salvas em `md_reader_config.json`:
+- Modo escuro
+- Nível de zoom
+- Arquivos recentes
+- Geometria da janela
 
 ## 🔄 Atualizações
 
