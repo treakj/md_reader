@@ -1,11 +1,12 @@
 {
-  "dark_mode": false,
-  "zoom_level": 1.7000000000000002,
+  "dark_mode": true,
+  "zoom_level": 0.9999999999999997,
   "recent_files": [
+    "C:/Users/treak/Downloads/prd_excel_powerquery_analyzer.md",
     "sample.md",
     "C:/Users/treak/Downloads/modulo1_refatorado_rev1.md",
     "/test/file.md"
   ],
-  "window_geometry": "1000x700+345+103",
+  "window_geometry": "1920x989+345+103",
   "show_line_numbers": false
 }

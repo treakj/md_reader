@@ -1,14 +1,20 @@
-# 📖 MD Reader - Leitor de Markdown
+# 📖 MD Reader - Cross-Platform Markdown Viewer
 
 <div align="center">
   <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python 3.8+">
-  <img src="https://img.shields.io/badge/Platform-Windows-lightgrey.svg" alt="Windows">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Android-lightgrey.svg" alt="Cross-Platform">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License">
-  <img src="https://img.shields.io/badge/GUI-Tkinter-orange.svg" alt="Tkinter GUI">
+  <img src="https://img.shields.io/badge/Desktop-Tkinter-orange.svg" alt="Tkinter GUI">
+  <img src="https://img.shields.io/badge/Mobile-Android-green.svg" alt="Android">
 </div>
 
 <p align="center">
-  <strong>Um leitor simples e elegante de arquivos Markdown com funcionalidade de exportação para PDF</strong>
+  <strong>Cross-platform markdown viewer with desktop and mobile support</strong>
+</p>
+
+<p align="center">
+  🖥️ <strong>Desktop:</strong> Full-featured Windows application with dark mode, zoom, and PDF export<br>
+  📱 <strong>Mobile:</strong> Native Android app with touch-optimized interface
 </p>
 
 <p align="center">
@@ -18,6 +24,33 @@
   <a href="#-programa-padrão">Programa Padrão</a> •
   <a href="#-contribuindo">Contribuindo</a>
 </p>
+
+## 🖥️📱 Plataformas Suportadas
+
+### **Desktop (Windows)**
+```
+desktop/
+├── markdown_reader.py    # Versão com console (debug)
+├── leitor_md.pyw        # Versão sem console  
+├── md_reader.bat        # Launcher para programa padrão
+└── test_markdown_reader.py
+```
+
+### **Mobile (Android) - Em Desenvolvimento** 🚧
+```
+mobile/
+├── android/             # App Android nativo (Kotlin)
+├── kivy/                # Versão Python/Kivy  
+└── flutter/             # Versão Flutter (cross-platform)
+```
+
+### **Código Compartilhado**
+```
+shared/
+└── markdown_processor.py  # Lógica de processamento comum
+```
+
+> 📱 **Android App**: Visite [`mobile/`](./mobile/) para detalhes sobre desenvolvimento mobile
 
 ## ✨ Funcionalidades
 
